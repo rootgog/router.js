@@ -26,6 +26,9 @@ Start Configuring routes
 
 ```javascript
 Router
+  .on(function () {
+      setPageContent("home.html");
+  })
   .on("account", function () {
       setPageContent("account.html");
   })
