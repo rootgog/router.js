@@ -36,7 +36,7 @@ Router
       setPageContent("editpost.html");
   })
   .notFound(function () {
-      console.log("404.html");
+      setPageContent("404.html");
   })
   .resolve();
 ```
