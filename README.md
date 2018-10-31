@@ -5,7 +5,7 @@ Router.js is a lightweight frontend page router.
 This router is not made to be used with hashes and instead should be used with paths.
 This is achieved by using the following in .htaccess on an apache server.
 
-```.htaccess
+```htaccess
 <IfModule mod_rewrite.c>
 RewriteEngine On
 RewriteCond %{REQUEST_FILENAME} !-f
