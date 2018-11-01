@@ -16,7 +16,7 @@ var Router = {
         url = (url.length > 1 && url[0] == "/") ? url.slice(1) : url;
         for (var route in this.routes) {
             if (url == route) {
-                this.setURL(route);
+                this.setURL(url);
                 this.routes[route]();
                 return;
             } else {
@@ -25,7 +25,7 @@ var Router = {
                 regex = "(^|\s)" + regex + "(\s|$)";
                 regex = new RegExp(regex, "g");
                 if (url.match(regex)) {
-                    this.setURL(route);
+                    this.setURL(url);
                     this.routes[route]();
                     return;
                 }
