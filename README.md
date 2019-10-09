@@ -1,49 +1,60 @@
 # Router.js
 
-Router.js is a lightweight frontend page router.
+Router.js is a lightweight frontend page router, and its nestable!.
 
-This router is not made to be used with hashes and instead should be used with paths.
-This is achieved by using the following in .htaccess on an apache server.
+Configure routes and their handlers, when you resonle a route its handler will be executed.
 
-```htaccess
-<IfModule mod_rewrite.c>
-RewriteEngine On
-RewriteCond %{REQUEST_FILENAME} !-f
-RewriteCond %{REQUEST_FILENAME} !-d
-RewriteRule (.*)$ index.html?request=$1 [QSA,NC,L]
-</IfModule>
-```
+# Features
+
+- Nested routers
+- wildcard path parameters
+
+# To Do:
+
+- named wildcard parameters
+
 # Usage
 
 Link the router.js file
 
 ```html
 <head>
-  <script src="/assets/js/router.js"></script>
+  <script src="//unpkg.com/@rootgog/router"></script>
 </head>
 ```
+
 Start Configuring routes
 
 ```javascript
-Router
-  .on(function () {
-      setPageContent("home.html");
+//define an account router for use later
+let accountRouter = new Router();
+accountRouter
+  .on(() => {
+    setPageContent("account.html");
   })
-  .on("account", function () {
-      setPageContent("account.html");
+  .on("edit", () => {
+    setPageContent("accountedit.html");
+  });
+
+//define the main router
+let router = new Router();
+router
+  .on(() => {
+    setPageContent("home.html");
   })
-  .on("post/*/edit", function () {
-      setPageContent("editpost.html");
+  .on("account", accountRouter)
+  .on("post/*/edit", () => {
+    setPageContent("editpost.html");
   })
-  .notFound(function () {
-      setPageContent("404.html");
-  })
-  .resolve();
+  .notFound(() => {
+    setPageContent("404.html");
+  });
 ```
 
 # Redirecting users
 
 This will use the handler that was configured before
+
 ```javascript
 Router.sendTo("account");
 ```
