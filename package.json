@@ -1,9 +1,10 @@
 {
   "name": "@rootgog/router",
-  "version": "1.0.1",
+  "version": "1.1.0",
   "description": "Lightweight JavaScript router",
   "main": "lib/router.js",
   "scripts": {
+    "build": "rollup --config",
     "test": "echo \"Error: no test specified\" && exit 1"
   },
   "repository": {
@@ -16,5 +17,9 @@
     "url": "https://github.com/rootgog/router.js/issues"
   },
   "homepage": "https://github.com/rootgog/router.js#readme",
-  "unpkg": "lib/router.js"
+  "unpkg": "lib/router.min.js",
+  "devDependencies": {
+    "rollup-plugin-terser": "^5.1.2",
+    "terser": "^4.3.9"
+  }
 }
