@@ -22,15 +22,16 @@ jobs:
     needs: build
     runs-on: ubuntu-latest
     steps:
-    - name: Commit files
-      run: |
-        git config --local user.email "action@github.com"
-        git config --local user.name "GitHub Action"
-        git commit -m "Add changes" -a
-    - name: Push changes
-      uses: ad-m/github-push-action@master
-      with:
-        github_token: ${{ secrets.ghubtkn }} 
+      - uses: actions/checkout@master
+      - name: Commit files
+        run: |
+          git config --local user.email "dev.georgebishop@gmail.com"
+          git config --local user.name "rootgog"
+          git commit -m "Add changes" -a
+      - name: Push changes
+        uses: ad-m/github-push-action@master
+        with:
+          github_token: ${{ secrets.ghubtkn }} 
   publish-npm:
     needs: commit-local
     runs-on: ubuntu-latest
