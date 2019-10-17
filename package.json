@@ -1,6 +1,6 @@
 {
   "name": "@rootgog/router",
-  "version": "1.2.1",
+  "version": "1.2.2",
   "description": "Lightweight JavaScript router",
   "main": "lib/router.js",
   "scripts": {
