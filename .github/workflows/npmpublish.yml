@@ -18,9 +18,21 @@ jobs:
           node-version: 12
       - run: npm ci
       - run: npm run build
-
-  publish-npm:
+  commit-local:
     needs: build
+    runs-on: ubuntu-latest
+    steps:
+    - name: Commit files
+      run: |
+        git config --local user.email "action@github.com"
+        git config --local user.name "GitHub Action"
+        git commit -m "Add changes" -a
+    - name: Push changes
+      uses: ad-m/github-push-action@master
+      with:
+        github_token: ${{ secrets.ghubtkn }} 
+  publish-npm:
+    needs: commit-local
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v1
