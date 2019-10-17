@@ -1,6 +1,6 @@
 {
   "name": "@rootgog/router",
-  "version": "1.2.0",
+  "version": "1.2.1",
   "description": "Lightweight JavaScript router",
   "main": "lib/router.js",
   "scripts": {
@@ -20,6 +20,7 @@
   "unpkg": "lib/router.min.js",
   "devDependencies": {
     "rollup-plugin-terser": "^5.1.2",
-    "terser": "^4.3.9"
+    "terser": "^4.3.9",
+    "rollup": "^1.24.0"
   }
 }
